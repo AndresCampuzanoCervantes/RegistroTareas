@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="Controller">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="From/Estilos/EstiloLogin.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+        <script src="Controller/Controller.js"></script>
+    </head>
+  <body ng-controller="LoginController">
+        <img id="Logo" src="From/Estilos/Imagenes/hypersoft_logo.png" alt="">
+        <section class="from-login">
+            <h5>Login</h5>
+            <input class="Controls" type="text" name ="user" value="" placeholder="Usuario" ng-model="Usuario.Correo">
+            <input class="Controls"  type="password" name ="pass" value="" placeholder="Contraseña" ng-model="Usuario.pass">
+            <button class="buttons" type="submit" name ="ingresar" value="Ingresar" 
+            ng-click="getUsuario()"
+            >Ingresar</button>
+        </section>
+    </body>
+</html>

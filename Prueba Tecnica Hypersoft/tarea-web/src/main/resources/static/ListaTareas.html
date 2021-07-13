@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="Controller">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="From/Estilos/EstiloListaTareas.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+    <script src="Controller/Controller.js"></script>
+</head>
+<body ng-controller="ListaTareasController">
+    <section class="Lista-Tarea" >
+        <h5>Listado de Tareas</h5>
+        <button class="buttons" ng-click="setModal(true,0)" >Nueva Tarea</button>  
+        <table id="tbl" class="Tabla" >
+            <tr>
+                <th></th>
+                <th>Tipo</th>
+                <th>Drescripcion</th>
+                <th>Prioridad</th>
+                <th colspan="4"></th>
+            </tr>
+            <tr ng-repeat="tr in ListaTareas">
+                <th>
+                    <input type= "checkbox">
+                </th>
+                <th>
+                    {{tr.tipo_Tr}}
+                </th>
+                <th>
+                    {{tr.descripcion_Tr}}
+                </th>
+                <th>
+                    {{tr.prioridad_Tr}}
+                </th>
+                <th>
+                    <button class="edit" id={{tr.id_tr}} ng-click="setModal(false,this.tr.id_tr)">Editar</button>
+                </th>
+                <th id ={{tr.id_tr}} >
+                    <button class="delete" id={{tr.id_tr}} ng-click="Delete(this)">Eliminar </button>
+                </th>
+                <th>
+                    <button id={{tr.id_tr}} ng-click="EditarPosicion(true,this.tr.id_tr)">+</button>
+                </th>
+                <th>
+                    <button id={{tr.id_tr}} ng-click="EditarPosicion(false,this.tr.id_tr)">-</button>
+                </th>
+            </tr>
+        </table>
+        <button class="buttons" ng-click="CerrarSesion()">Cerrar sesion</button>
+    </section>
+    <div class="modal" id="id_modal">
+        <div class="contenedor" id="id_contenedor">
+            <div class="superior">
+                <header id="EncabezadoModal">Nueva Tarea</header>
+            </div>
+            <div class="contenido" > 
+                <div class="TipoTareas">
+                    <h5 style="color: white;">
+                        Tipo de Tarea:
+                    </h5>
+                    <select class="Combo" name="Tipos Tareas" id="TpTarea" ng-model="NewTarea.Tipo_Tr">
+                        <option value="Hogar">Hogar</option>
+                        <option value="Trabajo">Trabajo</option>
+                        <option value="Habito">Hábito</option>
+                    </select>
+                </div>
+                <div class="TipoPrioridad">
+                    <h5 style="color: white;">
+                        Prioridad:
+                    </h5>
+                    <select class="Combo" name="Prioridad" id="TpPrioridad" ng-model="NewTarea.Prioridad_Tr">
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+                </div>
+            </div>
+            <textarea name="Drescripcion" id="txt_Descripcion" cols="40" rows="7" ng-model="NewTarea.Descripcion_Tr"></textarea>
+            <div class="botones" style="margin-left: 50%">  
+                <input class="buttons" type="submit" name="Cancelar" value="Cancelar" ng-click="setModal()">
+                <input class="buttons" type="submit" name="Guardar" value="Guardar" ng-click="addPost(0)"> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
